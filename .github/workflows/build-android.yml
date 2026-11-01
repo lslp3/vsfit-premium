@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ master ] # <-- Mude de 'main' para 'master'
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -30,6 +30,9 @@ jobs:
 
       - name: Build Web Assets
         run: npx expo export --platform web --output-dir dist
+
+      - name: Add Android Platform
+        run: npx cap add android
 
       - name: Sync Capacitor Android
         run: npx cap sync android
